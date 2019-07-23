@@ -1,0 +1,32 @@
+service:
+  name: mylambdatodo
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  region: ap-southeast-2
+  memorySize: 512
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          method: get
+          path: hello
+  dbTest:
+    handler: handler.dbTest
+    events: 
+      - http: get dbtest
+  createTodo:
+    handler: handler.createTodo
+    events:
+      - http: post todo
+  getTodos:
+    handler: handler.getTodos
+    events:
+      - http: get todo
